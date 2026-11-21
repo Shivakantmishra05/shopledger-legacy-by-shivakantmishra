@@ -1,0 +1,100 @@
+Command: node --test test/invoice-regression.test.js
+Result captured before changing lib/invoice.js:
+
+✖ invoice uses the configured HSN GST slab for each item (1.540167ms)
+✖ invoice applies a percentage coupon to subtotal, then calculates GST on discounted value (0.156166ms)
+✖ invoice honors the SAVE10 maximum discount (0.422667ms)
+✖ invoice totals and GST breakdown match checkout pricing for mixed HSN items with a capped coupon (0.332833ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 0
+ℹ fail 4
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 86.858459
+
+✖ failing tests:
+
+test at test/invoice-regression.test.js:11:1
+✖ invoice uses the configured HSN GST slab for each item (1.540167ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+
+    [
+  -   5,
+  -   12,
+      18,
+  +   18,
+  +   18
+    ]
+
+      at TestContext.<anonymous> (/Users/shivakantmishra/Downloads/shopledger-legacy-by-shivakantmishra/test/invoice-regression.test.js:19:10)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.start (node:internal/test_runner/test:1262:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ 18, 18, 18 ],
+    expected: [ 5, 12, 18 ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at test/invoice-regression.test.js:24:1
+✖ invoice applies a percentage coupon to subtotal, then calculates GST on discounted value (0.156166ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+
+  35.4 !== 30
+
+      at TestContext.<anonymous> (/Users/shivakantmishra/Downloads/shopledger-legacy-by-shivakantmishra/test/invoice-regression.test.js:28:10)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.start (node:internal/test_runner/test:1262:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 35.4,
+    expected: 30,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at test/invoice-regression.test.js:33:1
+✖ invoice honors the SAVE10 maximum discount (0.422667ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+
+  236 !== 150
+
+      at TestContext.<anonymous> (/Users/shivakantmishra/Downloads/shopledger-legacy-by-shivakantmishra/test/invoice-regression.test.js:37:10)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.start (node:internal/test_runner/test:1262:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 236,
+    expected: 150,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at test/invoice-regression.test.js:42:1
+✖ invoice totals and GST breakdown match checkout pricing for mixed HSN items with a capped coupon (0.332833ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+
+  305.62 !== 150
+
+      at TestContext.<anonymous> (/Users/shivakantmishra/Downloads/shopledger-legacy-by-shivakantmishra/test/invoice-regression.test.js:54:10)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.start (node:internal/test_runner/test:1262:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 305.62,
+    expected: 150,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
